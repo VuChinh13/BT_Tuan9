@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/search"
+        android:title="Tìm kiếm"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/edit_time_new"
+        android:title="Thời gian sửa đổi (Mới nhất trước)" />
+    <item
+        android:id="@+id/edit_time_old"
+        android:title="Thời gian sửa đổi (Cũ nhất trước)" />
+    <item
+        android:id="@+id/title_a_z"
+        android:title="Tiêu đề (A-Z)" />
+    <item
+        android:id="@+id/title_z_a"
+        android:title="Tiêu đề (Z-A)" />
+</menu>
