@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetailActivity">
@@ -12,18 +11,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_detail"
-        android:padding="15dp"
+        android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/iv_back_arrow"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_backarrow" />
+
         <EditText
             android:id="@+id/et_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="26dp"
             android:background="@android:color/transparent"
             android:ems="10"
@@ -35,14 +42,15 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/iv_confirm"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/iv_back_arrow" />
 
         <ImageView
             android:id="@+id/iv_confirm"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            app:layout_constraintBottom_toBottomOf="@+id/et_title"
+            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/baseline_check_24" />
 
 
@@ -61,17 +69,16 @@
             android:id="@+id/et_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="13dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="17dp"
             android:background="@android:color/transparent"
             android:ems="10"
+            android:paddingLeft="5dp"
             android:gravity="top|left"
             android:hint="Content"
             android:imeOptions="actionNone"
             android:inputType="textMultiLine"
             android:scrollbars="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="17sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_edit_time" />
 

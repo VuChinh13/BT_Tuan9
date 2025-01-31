@@ -28,6 +28,12 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
 
         dataBase = AppDatabase.getInstance(this)
         noteDao = dataBase.noteDao()
@@ -53,7 +59,13 @@ class DetailActivity : AppCompatActivity() {
                 finish()
             }
         }
+
+        // khi mà ấn back arrow
+        binding.ivBackArrow.setOnClickListener {
+            finish()
+        }
     }
+
 
     private fun display() {
         val title = intent.getStringExtra(EXTRA_TITLE)
