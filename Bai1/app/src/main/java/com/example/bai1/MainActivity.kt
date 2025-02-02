@@ -86,6 +86,8 @@ class MainActivity : AppCompatActivity() {
             lifecycleScope.launch(Dispatchers.IO) {
                 try {
                     // Xóa trong cơ sở dữ liệu
+                    // Trong launch thì code vẫn là chạy kiểu tuần tự
+                    // Các launch thì chạy song song
                     noteDao.delete(*selectedItems.toTypedArray())
 
                     // Sau khi xóa trong DB, quay lại UI chính
@@ -182,7 +184,8 @@ class MainActivity : AppCompatActivity() {
                     noteDao.update(listNote[index])
                 }
                 // Thông báo cập nhật lên trên RecyclerView
-                itemAdapter.notifyDataSetChanged()
+                // Cập nhật cái này thì chỉ cần thay đổi cái đấy
+                itemAdapter.notifyItemChanged(index)
             }
         }
 
@@ -197,7 +200,8 @@ class MainActivity : AppCompatActivity() {
                 val note = Note(0, title, content, editTime)
                 listNote.add(note)
                 // Thông báo cập nhật lên trên RecyclerView
-                itemAdapter.notifyDataSetChanged()
+                // Chỉ cần thêm vào cuối thôi
+                itemAdapter.notifyItemInserted(listNote.size-1)
             }
         }
 
@@ -220,8 +224,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                Log.d("kiemtra", "ok")
-                // Tìm kiếm theo tiêu đề
                 val listCopy = listNote.toMutableList()
                 val query = newText.toString().trim()
 
@@ -282,7 +284,6 @@ class MainActivity : AppCompatActivity() {
                 // Cập nhật lên RecyclerView
                 itemAdapter.list = listNote
                 itemAdapter.notifyDataSetChanged()
-
                 true
             }
 
