@@ -86,5 +86,4 @@ class ItemAdapter(
             checkBox = binding.cbDelete
         }
     }
-
 }
